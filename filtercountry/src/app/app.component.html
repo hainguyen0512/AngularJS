@@ -1,0 +1,18 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Country</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> <input type="text" class="form-control" id="text" [(ngModel)]="idFilter"> </td>
+            <td> <input type="text" class="form-control" id="text" [(ngModel)]="nameFilter"> </td>
+        </tr>
+        <tr *ngFor="let item of country | filter :idFilter :nameFilter">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+        </tr>
+    </tbody>
+</table>

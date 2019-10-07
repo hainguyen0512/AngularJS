@@ -1,0 +1,34 @@
+<table class="table table-dark">
+  <thead>
+      <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Option</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let item of Email">
+          <td>{{item.id}}</td>
+          <td>{{item.email}}</td>
+          <td>
+              <button (click)="removeEmail(id)" type="button" class="btn btn-primary">Delete</button>
+          </td>
+      </tr>
+  </tbody>
+</table>
+
+<form action="/action_page.php">
+  <div class="form-group">
+      <label for="usr">Email:</label>
+      <input type="text" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email"
+          name="email" ngModel [(ngModel)]="newEmail" #emailref="ngModel">
+      <div *ngIf="emailref.errors &&(emailref.touched || emailref.dirty)" class="aler alert-danger">
+          <div [hidden]="!emailref.errors?.pattern">
+              Email không hợp lệ!
+          </div>
+      </div>
+      <button (click)="addEmail()" type="submit" class="btn btn-primary">Add Email</button>
+  </div>
+  
+</form>
+<!-- [(ngModel)] = "newEmail" -->
